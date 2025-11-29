@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        padding: 2em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+      form {
+        text-align: left;
+      }
+    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Signup | URL Shortener</title>
+  </head>
+  <body>
+    <h1>Sign up</h1>
+    <form method="POST" action="/user">
+      <label>Full name:</label><br />
+      <input type="text" name="name" placeholder="John Doe" /><br />
+      <label>Email:</label><br />
+      <input type="text" name="email" placeholder="johndoe@email.com" /><br />
+
+      <label>Password:</label><br />
+      <input type="text" name="password" placeholder="*******" /><br />
+      <button type="submit">Signup</button>
+    </form>
+  </body>
+</html>

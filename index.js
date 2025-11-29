@@ -1,10 +1,12 @@
 const express = require("express");
 const path = require("path");
+const { mongodbURI } = require("./config/config");
 const { connectToMongoDB } = require("./connect");
+
 const URL = require("./models/urlModel");
 const urlRoute = require("./routes/urlRoutes");
 const staticRoute = require("./routes/staticRouter");
-const { mongodbURI } = require("./config/config");
+const userRoute = require("./routes/userRoutes");
 
 const app = express();
 const PORT = 8000;
@@ -19,9 +21,10 @@ app.set("views", path.resolve("./views"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use("/", staticRoute);
-
+app.use("/user", userRoute);
 app.use("/url", urlRoute);
-app.get("/:shortId", async (req, res) => {
+
+app.get("/url/:shortId", async (req, res) => {
   const shortId = req.params.shortId;
   const entry = await URL.findOneAndUpdate(
     { shortId },
